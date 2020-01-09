@@ -14,10 +14,10 @@ public class Usuario {
 	private String email;
 	private String senha;
 	private Integer matricula;
-	
+
 	public Usuario() {}
 
-	public Usuario(String nome, String email, String senha, int matricula) {
+	public Usuario(String nome, String email, String senha, Integer matricula) {
 		this.nome = nome;
 		this.email = email;
 		this.senha = senha;

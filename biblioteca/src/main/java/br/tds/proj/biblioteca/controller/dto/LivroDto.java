@@ -1,6 +1,7 @@
 package br.tds.proj.biblioteca.controller.dto;
 
-import org.springframework.data.domain.Page;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import br.tds.proj.biblioteca.model.Livro;
 
@@ -24,8 +25,8 @@ public class LivroDto {
 		this.setGenero(livro.getGenero().toString());
 	}
 	
-	public static Page<LivroDto> converter(Page<Livro> livros) {
-		return livros.map(LivroDto::new);
+	public static List<LivroDto> converter(List<Livro> livros) {
+		return livros.stream().map(LivroDto::new).collect(Collectors.toList());
 	}
 
 	public String getGenero() {

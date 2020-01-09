@@ -1,9 +1,10 @@
 package br.tds.proj.biblioteca.controller.dto;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
-
-import org.springframework.data.domain.Page;
 
 import br.tds.proj.biblioteca.model.Usuario;
 
@@ -45,8 +46,8 @@ public class UsuarioDto {
 		this.email = email;
 	}
 
-	public static Page<UsuarioDto> converter(Page<Usuario> usuarios) {
-		return usuarios.map(UsuarioDto::new);
+	public static List<UsuarioDto> converter(List<Usuario> autores) {
+		return autores.stream().map(UsuarioDto::new).collect(Collectors.toList());
 	}
 
 }

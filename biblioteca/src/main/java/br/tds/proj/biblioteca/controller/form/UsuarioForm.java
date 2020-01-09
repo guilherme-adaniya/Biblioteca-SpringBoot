@@ -16,6 +16,14 @@ public class UsuarioForm {
 	@NotNull
 	private Integer matricula;
 	
+	public Integer getMatricula() {
+		return matricula;
+	}
+
+	public void setMatricula(Integer matricula) {
+		this.matricula = matricula;
+	}
+
 	public UsuarioForm() {}
 	
 	public UsuarioForm(Usuario usuario) {
@@ -41,14 +49,6 @@ public class UsuarioForm {
 
 	public void setSenha(String senha) {
 		this.senha = senha;
-	}
-
-	public Integer getMatricula() {
-		return matricula;
-	}
-
-	public void setMatricula(Integer matricula) {
-		this.matricula = matricula;
 	}
 
 	public void setEmail(String email) {

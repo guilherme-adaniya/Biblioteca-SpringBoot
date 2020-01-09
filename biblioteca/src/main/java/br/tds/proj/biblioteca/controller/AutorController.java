@@ -1,16 +1,13 @@
 package br.tds.proj.biblioteca.controller;
 
 import java.net.URI;
+import java.util.List;
 import java.util.Optional;
 
 import javax.transaction.Transactional;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort.Direction;
-import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -37,16 +34,9 @@ public class AutorController {
 	private AutorRepository autorRepository;
 	
 	@GetMapping
-	public Page<AutorDto> listarAutores(@RequestParam(required = false) String nome, 
-	 @PageableDefault(sort ="id", direction = Direction.ASC, page = 0, size = 10) Pageable paginacao){
-		
-		if (nome == null) {
-			Page<Autor> autores = autorRepository.findAll(paginacao);
-			return AutorDto.converter(autores);
-		} else {
-			Page<Autor> autores = autorRepository.findByNome(nome, paginacao);
-			return AutorDto.converter(autores);
-		}
+	public List<AutorDto> listarAutores(@RequestParam(required = false) String nome){
+		List<Autor> autores = autorRepository.findAll();
+		return AutorDto.converter(autores);
 	}
 	
 	@PostMapping

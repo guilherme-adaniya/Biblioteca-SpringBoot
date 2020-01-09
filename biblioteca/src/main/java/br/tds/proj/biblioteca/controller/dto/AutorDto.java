@@ -1,6 +1,7 @@
 package br.tds.proj.biblioteca.controller.dto;
 
-import org.springframework.data.domain.Page;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import br.tds.proj.biblioteca.model.Autor;
 
@@ -16,8 +17,8 @@ public class AutorDto {
 		this.nome = autor.getNome();
 	}
 
-	public static Page<AutorDto> converter(Page<Autor> autores) {
-		return autores.map(AutorDto::new);
+	public static List<AutorDto> converter(List<Autor> autores) {
+		return autores.stream().map(AutorDto::new).collect(Collectors.toList());
 	}
 	
 }

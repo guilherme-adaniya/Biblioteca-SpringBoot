@@ -12,16 +12,16 @@ public class AtualizaUsuarioForm {
 	private String nome;
 	@NotNull @NotEmpty
 	private String email;
-	@NotNull @NotEmpty
-	private String senha;
-	
-	public String getSenha() {
-		return senha;
-	}
-
-	public void setSenha(String senha) {
-		this.senha = senha;
-	}
+//	@NotNull @NotEmpty
+//	private String senha;
+//	
+//	public String getSenha() {
+//		return senha;
+//	}
+//
+//	public void setSenha(String senha) {
+//		this.senha = senha;
+//	}
 
 	public String getNome() {
 		return nome;
@@ -46,10 +46,10 @@ public class AtualizaUsuarioForm {
 		return usuario;
 	}
 	
-	public Usuario atualizarSenha(Long id, UsuarioRepository usuarioRepository) {
-		Usuario usuario = usuarioRepository.getOne(id);
-		usuario.setSenha(senha);
-		return usuario;
-	}
+//	public Usuario atualizarSenha(Long id, UsuarioRepository usuarioRepository) {
+//		Usuario usuario = usuarioRepository.getOne(id);
+//		usuario.setSenha(senha);
+//		return usuario;
+//	}
 
 }

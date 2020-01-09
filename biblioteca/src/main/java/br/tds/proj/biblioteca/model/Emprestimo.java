@@ -18,6 +18,12 @@ public class Emprestimo {
 	
 	public Emprestimo() {}
 	
+	public Emprestimo(Usuario usuario, Livro livro) {
+		this.usuario = usuario;
+		this.livro = livro;
+		livro.setEmprestado(true);
+	}
+
 	public Long getId() {
 		return id;
 	}

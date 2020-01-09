@@ -10,4 +10,6 @@ public interface LivroRepository extends JpaRepository<Livro, Long>{
 
 	Page<Livro> findByTitulo(String titulo, Pageable paginacao);
 
+	Livro findByTitulo(String livro);
+
 }

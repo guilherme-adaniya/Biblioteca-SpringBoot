@@ -4,12 +4,13 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import br.tds.proj.biblioteca.model.Emprestimo;
 import br.tds.proj.biblioteca.model.Usuario;
 
-public interface UsuarioRepository extends JpaRepository<Usuario, Long>{
+public interface EmprestimoRepository extends JpaRepository<Emprestimo, Long>{
 
-	Page<Usuario> findByNome(String nome, Pageable paginacao);
+	Page<Emprestimo> findById(Long id, Pageable paginacao);
 
-	Usuario findByNome(String usuario);
+	Usuario findByUsuario(String usuario);
 
 }

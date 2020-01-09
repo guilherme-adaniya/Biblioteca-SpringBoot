@@ -1,16 +1,13 @@
 package br.tds.proj.biblioteca.controller;
 
 import java.net.URI;
+import java.util.List;
 import java.util.Optional;
 
 import javax.transaction.Transactional;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort.Direction;
-import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -37,16 +34,11 @@ public class UsuarioController {
 	private UsuarioRepository usuarioRepository;
 	
 	@GetMapping
-	public Page<UsuarioDto> listarUsuarios(@RequestParam(required = false) String nome, 
-	 @PageableDefault(sort ="id", direction = Direction.ASC, page = 0, size = 10) Pageable paginacao){
-		
-		if (nome == null) {
-			Page<Usuario> autores = usuarioRepository.findAll(paginacao);
-			return UsuarioDto.converter(autores);
-		} else {
-			Page<Usuario> autores = usuarioRepository.findByNome(nome, paginacao);
-			return UsuarioDto.converter(autores);
-		}
+	public List<UsuarioDto> listarUsuarios(@RequestParam(required = false) String nome){
+	
+		List<Usuario> autores = usuarioRepository.findAll();
+		return UsuarioDto.converter(autores);
+
 	}
 	
 	@PostMapping
@@ -81,17 +73,17 @@ public class UsuarioController {
 		return ResponseEntity.notFound().build();
 	}
 	
-	@PutMapping("/{id}/senha")
-	@Transactional
-	public ResponseEntity<UsuarioDto> atualizarSenhaUsuario(@PathVariable Long id, @RequestBody @Valid AtualizaUsuarioForm form) {
-		Optional<Usuario> optional = usuarioRepository.findById(id);
-		if (optional.isPresent()) {
-			Usuario usuario = form.atualizarSenha(id, usuarioRepository);
-			return ResponseEntity.ok(new UsuarioDto(usuario));
-		}
-		
-		return ResponseEntity.notFound().build();
-	}
+//	@PutMapping("/senha/{id}")
+//	@Transactional
+//	public ResponseEntity<UsuarioDto> atualizarSenhaUsuario(@PathVariable Long id, @RequestBody @Valid AtualizaUsuarioForm form) {
+//		Optional<Usuario> optional = usuarioRepository.findById(id);
+//		if (optional.isPresent()) {
+//			Usuario usuario = form.atualizarSenha(id, usuarioRepository);
+//			return ResponseEntity.ok(new UsuarioDto(usuario));
+//		}
+//		
+//		return ResponseEntity.notFound().build();
+//	}
 	
 	@DeleteMapping("/{id}")
 	@Transactional

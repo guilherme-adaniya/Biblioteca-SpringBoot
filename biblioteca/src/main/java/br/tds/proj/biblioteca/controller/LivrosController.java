@@ -9,6 +9,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -65,6 +66,7 @@ public class LivrosController {
 		return ResponseEntity.notFound().build();
 	}
 	
+	@CrossOrigin
 	@PutMapping("/{id}")
 	@Transactional
 	public ResponseEntity<LivroDto> atualizarLivro(@PathVariable Long id, @RequestBody @Valid AtualizaLivroForm form){
@@ -76,6 +78,7 @@ public class LivrosController {
 		return ResponseEntity.notFound().build();
 	}
 	
+	@CrossOrigin
 	@DeleteMapping("/{id}")
 	@Transactional
 	public ResponseEntity<?> removerLivro(@PathVariable Long id){

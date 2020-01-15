@@ -9,6 +9,15 @@ import javax.validation.constraints.NotNull;
 import br.tds.proj.biblioteca.model.Usuario;
 
 public class UsuarioDto {
+	private Long id;
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
 	@NotNull @NotEmpty
 	private String nome;
 	@NotNull @NotEmpty
@@ -25,6 +34,7 @@ public class UsuarioDto {
 	}
 
 	public UsuarioDto(Usuario usuario) {
+		this.id = usuario.getId();
 		this.nome = usuario.getNome();
 		this.email = usuario.getEmail();
 		this.senha = usuario.getSenha();

@@ -7,6 +7,7 @@ import br.tds.proj.biblioteca.model.Autor;
 
 public class AutorDto {
 
+	private Long id;
 	private String nome;
 
 	public String getNome() {
@@ -14,11 +15,20 @@ public class AutorDto {
 	}
 	
 	public AutorDto(Autor autor) {
+		this.id = autor.getId();
 		this.nome = autor.getNome();
 	}
 
 	public static List<AutorDto> converter(List<Autor> autores) {
 		return autores.stream().map(AutorDto::new).collect(Collectors.toList());
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 	
 }

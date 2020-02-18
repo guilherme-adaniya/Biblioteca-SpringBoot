@@ -9,24 +9,24 @@ import br.tds.proj.biblioteca.model.Usuario;
 
 public class EmprestimoDto {
 	
-	private Usuario usuario;
-	private Livro livro;
+	private String usuario;
+	private String livro;
 	
 	public EmprestimoDto(Emprestimo emprestimo) {
-		this.usuario = emprestimo.getUsuario();
-		this.livro = emprestimo.getLivro();
+		this.usuario = emprestimo.getUsuario().getNome();
+		this.livro = emprestimo.getLivro().getTitulo();
 	}
 	
-	public Usuario getUsuario() {
+	public String getUsuario() {
 		return usuario;
 	}
-	public void setUsuario(Usuario usuario) {
+	public void setUsuario(String usuario) {
 		this.usuario = usuario;
 	}
-	public Livro getLivro() {
+	public String getLivro() {
 		return livro;
 	}
-	public void setLivro(Livro livro) {
+	public void setLivro(String livro) {
 		this.livro = livro;
 	}
 
